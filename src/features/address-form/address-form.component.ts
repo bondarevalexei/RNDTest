@@ -53,7 +53,7 @@ export class AddressFormComponent {
       Validators.minLength(1),
       Validators.pattern(/^[a-zA-Z]*/),
     ]),
-    apartment: new FormControl<string>('', Validators.pattern(/^\d*/)),
+    apartment: new FormControl<string | null>(null, Validators.pattern(/^\d*/)),
     postalCode: new FormControl<string>('', [
       Validators.required,
       Validators.pattern(/^\d{6}/),

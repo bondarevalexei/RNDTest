@@ -14,22 +14,22 @@ import {
 @Component({
   selector: 'app-client-info',
   imports: [ReactiveFormsModule],
-  templateUrl: './client-info.component.html',
-  styleUrl: './client-info.component.scss',
+  templateUrl: './client-info-form.component.html',
+  styleUrl: './client-info-form.component.scss',
 })
-export class ClientInfoComponent {
+export class ClientInfoFormComponent {
   clientInfoForm = new FormGroup({
-    firstName: new FormControl('', [
+    firstName: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(50),
     ]),
-    lastName: new FormControl('', [
+    lastName: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(50),
     ]),
-    middleName: new FormControl('', [
+    middleName: new FormControl<string | null>(null, [
       Validators.minLength(2),
       Validators.maxLength(50),
     ]),
@@ -38,13 +38,13 @@ export class ClientInfoComponent {
       Validators.required,
       customClientAgeValidator,
     ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
     phone: new FormControl('', [
       Validators.required,
       // if somewhere we need to use other regexp, we can past it in validator
       customPhoneValidator(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/),
     ]),
-    passport: new FormControl('', [
+    passport: new FormControl<string>('', [
       Validators.required,
       // different regex for different countries
       customPassportValidator(/^\d{4} \d{6}$/),

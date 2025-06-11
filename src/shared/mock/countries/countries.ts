@@ -1,6 +1,6 @@
-import { Country } from '../../types/country';
+import { Country } from '../../types/Country';
 
-export const countries: Country[] = [
+export const COUNTRIES: Country[] = [
   { name: 'Afghanistan', code: 'AF' },
   { name: 'Åland Islands', code: 'AX' },
   { name: 'Albania', code: 'AL' },

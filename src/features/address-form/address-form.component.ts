@@ -10,9 +10,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { map, Observable, startWith } from 'rxjs';
-import { countries } from '../../shared/mock/countries/countries';
+import { COUNTRIES } from '../../shared/mock/Countries/';
 import { AsyncPipe } from '@angular/common';
-import { Country } from '../../shared/types/country';
+import { Country } from '../../shared/types/Country';
 
 @Component({
   selector: 'app-address-form',
@@ -28,7 +28,7 @@ import { Country } from '../../shared/types/country';
   styleUrl: './address-form.component.scss',
 })
 export class AddressFormComponent {
-  options: Country[] = countries;
+  options: Country[] = COUNTRIES;
   filteredOptions!: Observable<Country[]>;
 
   addressForm = new FormGroup({

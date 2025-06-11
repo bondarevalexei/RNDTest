@@ -10,6 +10,7 @@ import {
   customPassportValidator,
   customPhoneValidator,
 } from '../../shared/validators/validators';
+import { Gender } from '../../shared/types/general/types';
 
 @Component({
   selector: 'app-client-info',

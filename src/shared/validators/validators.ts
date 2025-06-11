@@ -22,7 +22,7 @@ export function customPassportValidator(passportRegex: RegExp): ValidatorFn {
   };
 }
 
-export function customBankDetailsValidator(length: number): ValidatorFn {
+export function customDigitsNLengthValidator(length: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     if (control.value.length !== length)
       return { invalidDetail: `length must be ${length}` };

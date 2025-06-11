@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { customBankDetailsValidator } from '../../shared/validators/validators';
+import { customDigitsNLengthValidator } from '../../shared/validators/validators';
 
 @Component({
   selector: 'app-bank-details-form',
@@ -12,11 +12,11 @@ export class BankDetailsFormComponent {
   bankDetailsForm = new FormGroup({
     accountNumber: new FormControl<string>('', [
       Validators.required,
-      customBankDetailsValidator(20),
+      customDigitsNLengthValidator(20),
     ]),
     bic: new FormControl<string>('', [
       Validators.required,
-      customBankDetailsValidator(9),
+      customDigitsNLengthValidator(9),
     ]),
     bankName: new FormControl<string>('', [
       Validators.required,
@@ -24,7 +24,7 @@ export class BankDetailsFormComponent {
     ]),
     correspondentAccount: new FormControl<string>('', [
       Validators.required,
-      customBankDetailsValidator(20),
+      customDigitsNLengthValidator(20),
     ]),
   });
 }

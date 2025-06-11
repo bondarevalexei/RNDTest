@@ -1,5 +1,7 @@
-type Gender = 'male' | 'femail';
+export type Gender = 'male' | 'femail';
 
-type TransactionType = 'transfer' | 'payment' | 'replenishment';
+export type TransactionType = 'transfer' | 'payment' | 'replenishment';
 
-type Currency = 'USD' | 'RUB' | 'EUR';
+export type Currency = 'USD' | 'RUB' | 'EUR';
+
+export type FormDocumentType = 'passport' | 'snils' | 'inn';

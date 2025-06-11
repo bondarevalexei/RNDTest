@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Currency, TransactionType } from '../../shared/types/general/types';
 
 @Component({
   selector: 'app-transaction-info-form',

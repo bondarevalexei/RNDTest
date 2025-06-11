@@ -3,7 +3,21 @@
 
 @if(documents.value.length > 0){ 
   @for (document of documents.value; track $index) {
-    
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ document.documentType }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Document Number: {{document.documentNumber}}</p>
+        <p>Issue Date: {{document.issueDate}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button matButton="outlined" extended (click)="deleteDocument($index)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
   } 
 } 
 

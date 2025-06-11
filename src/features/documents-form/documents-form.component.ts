@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-documents-form',
@@ -24,6 +27,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './documents-form.component.html',
   styleUrl: './documents-form.component.scss',
@@ -97,5 +103,9 @@ export class DocumentsFormComponent implements OnInit {
     );
 
     this.resetFields();
+  }
+
+  public deleteDocument(id: number) {
+    this.documents.removeAt(id);
   }
 }

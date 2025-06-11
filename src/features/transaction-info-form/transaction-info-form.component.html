@@ -1,1 +1,37 @@
-<p>transaction-info-form works!</p>
+<form class="form">
+  <mat-form-field>
+    <mat-label>Тип транзакции</mat-label>
+    <mat-select [formControl]="transactionInfoForm.controls.transactionType">
+      @for (transaction of transactions; track transaction) {
+      <mat-option [value]="transaction">{{ transaction }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Сумма транзакции</mat-label>
+    <input
+      matInput
+      placeholder="0.01"
+      required="true"
+      min="0.01"
+      type="number"
+      [formControl]="transactionInfoForm.controls.amount"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Валюта</mat-label>
+    <mat-select [formControl]="transactionInfoForm.controls.currency">
+      @for (currency of currencies; track currency) {
+      <mat-option [value]="currency">{{ currency }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Комментарий</mat-label>
+    <textarea
+      matInput
+      [formControl]="transactionInfoForm.controls.comment"
+      placeholder="Введите Комментарий"
+    ></textarea>
+  </mat-form-field>
+</form>

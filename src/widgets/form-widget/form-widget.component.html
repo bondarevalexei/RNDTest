@@ -1,0 +1,22 @@
+<mat-stepper orientation="vertical" #stepper class="content">
+  <mat-step>
+    <ng-template matStepLabel>Данные клиента</ng-template>
+    <app-client-info />
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Адрес регистрации</ng-template>
+    <app-address-form />
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Банковские реквизиты</ng-template>
+    <app-bank-details-form />
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Информация о транзакции</ng-template>
+    <app-transaction-info-form />
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Дополнительные документы</ng-template>
+    <app-documents-form />
+  </mat-step>
+</mat-stepper>

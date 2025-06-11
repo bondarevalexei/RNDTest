@@ -1,6 +1,6 @@
-<form [formGroup]="addressForm">
+<form class="form">
   <mat-form-field>
-    <mat-label>Country</mat-label>
+    <mat-label>Страна</mat-label>
     <input
       type="text"
       matInput
@@ -12,5 +12,58 @@
       <mat-option [value]="option">{{ option.name }}</mat-option>
       }
     </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Регион</mat-label>
+    <input
+      matInput
+      placeholder="Введите регион"
+      required="true"
+      [formControl]="addressForm.controls.region"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Город</mat-label>
+    <input
+      matInput
+      placeholder="Введите город"
+      required="true"
+      [formControl]="addressForm.controls.city"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Улица</mat-label>
+    <input
+      matInput
+      placeholder="Введите улица"
+      required="true"
+      [formControl]="addressForm.controls.street"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дом</mat-label>
+    <input
+      matInput
+      placeholder="Введите дом"
+      required="true"
+      [formControl]="addressForm.controls.house"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Квартира</mat-label>
+    <input
+      matInput
+      placeholder="Введите квартиру"
+      [formControl]="addressForm.controls.apartment"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Индекс</mat-label>
+    <input
+      matInput
+      placeholder="Введите индекс"
+      required="true"
+      [formControl]="addressForm.controls.postalCode"
+    />
   </mat-form-field>
 </form>

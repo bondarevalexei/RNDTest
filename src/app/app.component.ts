@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { AddressFormComponent } from '../features/address-form/address-form.component';
-import { DocumentsFormComponent } from '../features/documents-form/documents-form.component';
+import { FormWidgetComponent } from '../widgets/form-widget/form-widget.component';
 
 @Component({
   selector: 'app-root',
-  imports: [AddressFormComponent, DocumentsFormComponent],
+  imports: [FormWidgetComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'rnd-point-test';
-}
+export class AppComponent {}

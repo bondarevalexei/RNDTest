@@ -1,1 +1,39 @@
-<p>bank-details-form works!</p>
+<form class="form">
+  <mat-form-field>
+    <mat-label>Номер счета</mat-label>
+    <input
+      matInput
+      placeholder="Введите номер счета"
+      required="true"
+      [formControl]="bankDetailsForm.controls.accountNumber"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>БИК банка</mat-label>
+    <input
+      matInput
+      placeholder="Введите БИК"
+      required="true"
+      [formControl]="bankDetailsForm.controls.bic"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Наименование банка</mat-label>
+    <input
+      matInput
+      placeholder="Введите наименование"
+      required="true"
+      [formControl]="bankDetailsForm.controls.bankName"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Коореспондентский счет</mat-label>
+    <input
+      matInput
+      required="true"
+      placeholder="Введите номер счета"
+      [formControl]="bankDetailsForm.controls.correspondentAccount"
+    />
+  </mat-form-field>
+</form>

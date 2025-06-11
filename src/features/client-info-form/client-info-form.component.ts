@@ -4,6 +4,7 @@ import {
   FormControl,
   ReactiveFormsModule,
   Validators,
+  FormsModule,
 } from '@angular/forms';
 import {
   customClientAgeValidator,
@@ -11,10 +12,27 @@ import {
   customPhoneValidator,
 } from '../../shared/validators/validators';
 import { Gender } from '../../shared/types/general/types';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-client-info',
-  imports: [ReactiveFormsModule],
+  imports: [
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './client-info-form.component.html',
   styleUrl: './client-info-form.component.scss',
 })

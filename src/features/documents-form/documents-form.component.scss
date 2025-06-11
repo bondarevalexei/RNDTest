@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+div {
+  padding-block: 10px;
+}
+
+.form {
+  margin-top: 10px;
+  margin-bottom: -20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}

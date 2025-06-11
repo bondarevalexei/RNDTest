@@ -1,1 +1,77 @@
-<p>client-info works!</p>
+<form class="form">
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input
+      matInput
+      placeholder="Введите имя"
+      required="true"
+      [formControl]="clientInfoForm.controls.firstName"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Фамилия</mat-label>
+    <input
+      matInput
+      placeholder="Введите фамилию"
+      required="true"
+      [formControl]="clientInfoForm.controls.lastName"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Отчество</mat-label>
+    <input
+      matInput
+      placeholder="Введите отчество"
+      [formControl]="clientInfoForm.controls.middleName"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Пол</mat-label>
+    <mat-select [formControl]="clientInfoForm.controls.gender">
+      @for (gender of ['male', 'female']; track gender) {
+      <mat-option [value]="gender">{{ gender }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [formControl]="clientInfoForm.controls.birthDate"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      required="true"
+      placeholder="Введите email"
+      type="email"
+      [formControl]="clientInfoForm.controls.email"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Телефон</mat-label>
+    <input
+      matInput
+      required="true"
+      placeholder="Введите номер телефона"
+      type="tel"
+      [formControl]="clientInfoForm.controls.phone"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Серия и номер паспорта</mat-label>
+    <input
+      matInput
+      required="true"
+      placeholder="Пример: 1111 111111"
+      type="text"
+      [formControl]="clientInfoForm.controls.passport"
+    />
+  </mat-form-field>
+</form>

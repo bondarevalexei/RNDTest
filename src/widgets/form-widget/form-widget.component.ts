@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { ClientInfo } from '../../shared/types/ClientInfo';
 import { Address } from '../../shared/types/Address';
 import { BankDetails } from '../../shared/types/BankDetails';
@@ -43,6 +43,7 @@ export class FormWidgetComponent {
   bankDetailsForm = viewChild(BankDetailsFormComponent);
   transactionInfoForm = viewChild(TransactionInfoFormComponent);
   documentsForm = viewChild(DocumentsFormComponent);
+  stepper = viewChild<MatStepper>('stepper');
 
   public sendData() {
     const clientInfo: ClientInfo = this.clientInfoForm()?.clientInfoForm
@@ -78,5 +79,27 @@ export class FormWidgetComponent {
       this.transactionInfoForm()?.transactionInfoForm.valid! &&
       this.documentsForm()?.documents.valid!
     );
+  }
+
+  public resetForms() {
+    this.clientInfoForm()?.clientInfoForm.reset();
+    this.addressForm()?.addressForm.reset();
+    this.bankDetailsForm()?.bankDetailsForm.reset();
+    this.transactionInfoForm()?.transactionInfoForm.reset();
+    this.documentsForm()?.documents.reset();
+    this.documentsForm()?.documents.clear();
+
+    this.clientInfoForm()?.clientInfoForm.markAsPristine();
+    this.clientInfoForm()?.clientInfoForm.markAsUntouched();
+    this.addressForm()?.addressForm.markAsPristine();
+    this.addressForm()?.addressForm.markAsUntouched();
+    this.bankDetailsForm()?.bankDetailsForm.markAsPristine();
+    this.bankDetailsForm()?.bankDetailsForm.markAsUntouched();
+    this.transactionInfoForm()?.transactionInfoForm.markAsPristine();
+    this.transactionInfoForm()?.transactionInfoForm.markAsUntouched();
+    this.documentsForm()?.documents.markAsPristine();
+    this.documentsForm()?.documents.markAsUntouched();
+
+    this.stepper()!.reset();
   }
 }

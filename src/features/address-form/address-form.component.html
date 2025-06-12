@@ -1,3 +1,4 @@
+<div class="header">Место жительства</div>
 <form class="form">
   <mat-form-field>
     <mat-label>Страна</mat-label>
@@ -6,12 +7,16 @@
       matInput
       [formControl]="addressForm.controls.country"
       [matAutocomplete]="auto"
+      class="input"
     />
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       @for (option of filteredOptions | async; track option) {
       <mat-option [value]="option">{{ option.name }}</mat-option>
       }
     </mat-autocomplete>
+    @if(addressForm.controls.country.hasError('required')){
+    <mat-error> Страна обязательна для заполнения </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Регион</mat-label>
@@ -20,7 +25,13 @@
       placeholder="Введите регион"
       required="true"
       [formControl]="addressForm.controls.region"
+      class="input"
     />
+    @if(addressForm.controls.region.hasError('required')){
+    <mat-error> Регион обязателен для заполнения </mat-error>
+    } @else if(addressForm.controls.region.hasError('minlength')){
+    <mat-error> Регион должен содержать минимум 3 символа </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Город</mat-label>
@@ -29,7 +40,13 @@
       placeholder="Введите город"
       required="true"
       [formControl]="addressForm.controls.city"
+      class="input"
     />
+    @if(addressForm.controls.city.hasError('required')){
+    <mat-error> Город обязателен для заполнения </mat-error>
+    } @else if(addressForm.controls.city.hasError('minlength')){
+    <mat-error> Город должен содержать минимум 3 символа </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Улица</mat-label>
@@ -38,7 +55,13 @@
       placeholder="Введите улица"
       required="true"
       [formControl]="addressForm.controls.street"
+      class="input"
     />
+    @if(addressForm.controls.street.hasError('required')){
+    <mat-error> Улица обязательна для заполнения </mat-error>
+    } @else if(addressForm.controls.street.hasError('minlength')){
+    <mat-error> Улица должна содержать минимум 3 символа </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Дом</mat-label>
@@ -47,7 +70,13 @@
       placeholder="Введите дом"
       required="true"
       [formControl]="addressForm.controls.house"
+      class="input"
     />
+    @if(addressForm.controls.house.hasError('required')){
+    <mat-error> Дом обязателен для заполнения </mat-error>
+    } @else if(addressForm.controls.house.hasError('minlength')){
+    <mat-error> Дом должен содержать минимум 1 символ </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Квартира</mat-label>
@@ -55,7 +84,12 @@
       matInput
       placeholder="Введите квартиру"
       [formControl]="addressForm.controls.apartment"
+      class="input"
     />
+    @if(addressForm.controls.apartment.value !== '' &&
+    addressForm.controls.apartment.hasError('pattern')){
+    <mat-error> Квартира может быть записана только цифрами </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Индекс</mat-label>
@@ -64,6 +98,13 @@
       placeholder="Введите индекс"
       required="true"
       [formControl]="addressForm.controls.postalCode"
+      class="input"
     />
+    @if(addressForm.controls.postalCode.hasError('required')){
+    <mat-error> Индекс обязателен для заполнения </mat-error>
+    } @else if(addressForm.controls.postalCode.hasError('maxlength') ||
+    addressForm.controls.postalCode.hasError('pattern')){
+    <mat-error> Индекс должен содержать 6 цифр </mat-error>
+    }
   </mat-form-field>
 </form>

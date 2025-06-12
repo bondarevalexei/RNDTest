@@ -1,32 +1,65 @@
 <mat-stepper orientation="vertical" #stepper class="content">
   <mat-step
     [completed]="
-      clientInfoForm()?.clientInfoForm?.valid &&
-      addressForm()?.addressForm?.valid
+      clientInfoForm()?.clientInfoForm?.valid === true &&
+      addressForm()?.addressForm?.valid === true
     "
   >
     <ng-template matStepLabel>Данные клиента</ng-template>
     <app-client-info />
     <app-address-form />
+    <div>
+      <button
+        matButton
+        matStepperNext
+        [disabled]="
+          !(
+            clientInfoForm()?.clientInfoForm?.valid &&
+            addressForm()?.addressForm?.valid
+          )
+        "
+      >
+        Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step
     [completed]="
-      bankDetailsForm()?.bankDetailsForm?.valid &&
-      transactionInfoForm()?.transactionInfoForm?.valid
+      bankDetailsForm()?.bankDetailsForm?.valid === true &&
+      transactionInfoForm()?.transactionInfoForm?.valid === true
     "
   >
     <ng-template matStepLabel>Банковские реквизиты</ng-template>
     <app-bank-details-form />
     <app-transaction-info-form />
+    <div>
+      <button matButton matStepperPrevious>Назад</button>
+      <button
+        matButton
+        matStepperNext
+        [disabled]="
+          !(
+            bankDetailsForm()?.bankDetailsForm?.valid &&
+            transactionInfoForm()?.transactionInfoForm?.valid
+          )
+        "
+      >
+        Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Дополнительные документы</ng-template>
     <app-documents-form />
+    <div>
+      <button matButton matStepperPrevious>Назад</button>
+      <button matButton matStepperNext>Далее</button>
+    </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Завершающий этап</ng-template>
     @if(!isValidForm()){
-    <p class="end_p">Заполните все поля</p>
+    <p class="end_p">Заполните все поля формы для отправки</p>
     } @else {
     <p class="end_p">Вы заполнили все поля</p>
     }
@@ -34,6 +67,6 @@
     <button matButton (click)="sendData()" [disabled]="!isValidForm()">
       Отправить
     </button>
-    <button matButton (click)="stepper.reset()">Очистить</button>
+    <button matButton (click)="resetForms()">Очистить</button>
   </mat-step>
 </mat-stepper>

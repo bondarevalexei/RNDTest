@@ -36,27 +36,26 @@ export class AddressFormComponent {
     region: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern(/^[a-zA-Z]*/),
     ]),
     city: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern(/^[a-zA-Z]*/),
     ]),
     street: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern(/^[a-zA-Z]*/),
     ]),
     house: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
-      Validators.pattern(/^[a-zA-Z]*/),
     ]),
-    apartment: new FormControl<string | null>(null, Validators.pattern(/^\d*/)),
+    apartment: new FormControl<string | null>(
+      null,
+      Validators.pattern(/^\d+$/)
+    ),
     postalCode: new FormControl<string>('', [
       Validators.required,
-      Validators.pattern(/^\d{6}/),
+      Validators.pattern(/^\d{6}$/),
       Validators.maxLength(6),
     ]),
   });

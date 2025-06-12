@@ -1,47 +1,68 @@
-@if(documents.value.length > 0){ @for (document of documents.value; track
-$index) {
-<mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>{{ document.documentType }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Document Number: {{ document.documentNumber }}</p>
-    <p>Issue Date: {{ document.issueDate }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button matButton="outlined" extended (click)="deleteDocument($index)">
-      <mat-icon>delete</mat-icon>
-      Delete
-    </button>
-  </mat-card-actions>
-</mat-card>
-} } @else {
-<div>Вы пока не добавили ни одного документа</div>
-}
-
-<button (click)="isShowAddForm = true">Добавить документ</button>
-
-@if(isShowAddForm){
+@if(documents.value.length > 0){
+<div class="cards">
+  @for (document of documents.value; track $index) {
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ getRuTitle(document.documentType) }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Номер: {{ document.documentNumber }}</p>
+      <p>Дата выдачи: {{ document.issueDate | date : "dd.MM.yyyy" }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button matButton="outlined" extended (click)="deleteDocument($index)">
+        <mat-icon>delete</mat-icon>
+        Удалить
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
+} @else if (!isShowAddForm){
+<div style="margin-bottom: 10px">Вы пока не добавили ни одного документа</div>
+<button matButton="outlined" (click)="isShowAddForm = true">
+  Добавить документ
+</button>
+} @if(isShowAddForm){
 <form class="form">
   <mat-form-field>
     <mat-label>Тип документа</mat-label>
     <mat-select [formControl]="documentType">
       @for (dType of documentTypes; track dType) {
-      <mat-option [value]="dType">{{ dType }}</mat-option>
+      <mat-option [value]="dType.type">{{ dType.ruTitle }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Введите номер {{ documentType.value }}</mat-label>
-    <input matInput placeholder="Ex. 1231" [formControl]="documentNumber" />
+    <mat-label>Введите номер</mat-label>
+    <input
+      matInput
+      placeholder="Ex. 1231"
+      [formControl]="documentNumber"
+      class="input"
+    />
+    @if(documentNumber.hasError('required')){
+    <mat-error> Необходимо ввести номер </mat-error>
+    } @if(documentNumber.hasError('invalidDetail')){
+
+    <mat-error> {{ documentNumber.errors!["invalidDetail"]! }} </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Дата выдачи</mat-label>
-    <input matInput [matDatepicker]="picker" [formControl]="issueDate" />
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [formControl]="issueDate"
+      class="input"
+    />
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <button (click)="addDocument()">Добавить</button>
+  <div class="btns">
+    <button matButton="filled" (click)="addDocument()">Добавить</button>
+    <button matButton="outlined" (click)="cancel()">Отмена</button>
+  </div>
 </form>
 }

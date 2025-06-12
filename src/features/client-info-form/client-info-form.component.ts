@@ -42,6 +42,8 @@ export class ClientInfoFormComponent {
     this.da.setLocale('en-GB');
   }
 
+  readonly maxDate = new Date();
+
   clientInfoForm = new FormGroup({
     firstName: new FormControl<string>('', [
       Validators.required,

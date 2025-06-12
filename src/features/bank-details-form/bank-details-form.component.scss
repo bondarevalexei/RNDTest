@@ -1,15 +1,1 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
-}
-
-.form {
-  margin-top: 10px;
-  margin-bottom: -20px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 5px;
-}
+@use "../../assets/styles/main-form-styles.scss" as *;

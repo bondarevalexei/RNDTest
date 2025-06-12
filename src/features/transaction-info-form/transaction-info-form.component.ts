@@ -41,7 +41,7 @@ export class TransactionInfoFormComponent {
       'payment',
       Validators.required
     ),
-    amount: new FormControl<number>(0.0, [
+    amount: new FormControl<number>(0.01, [
       Validators.required,
       Validators.min(0.01),
     ]),

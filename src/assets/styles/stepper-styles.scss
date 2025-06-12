@@ -118,6 +118,20 @@
       cursor: not-allowed;
     }
 
+    &[matStepperNext] {
+      background-color: #e1f0ff;
+      color: $text-color;
+
+      &:hover {
+        background-color: color.adjust(#e1f0ff, $lightness: -5%);
+      }
+    }
+
+    &[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     &:not([disabled]):not([matStepperPrevious]):not(:last-child) {
       background-color: $primary-color;
       color: white;
@@ -125,15 +139,6 @@
       &:hover {
         background-color: color.adjust($primary-color, $lightness: -10%);
         box-shadow: 0 2px 10px rgba($primary-color, 0.4);
-      }
-    }
-    &:last-child {
-      background-color: transparent;
-      color: $error-color;
-      border: 1px solid rgba($error-color, 0.5);
-
-      &:hover {
-        background-color: rgba($error-color, 0.05);
       }
     }
   }

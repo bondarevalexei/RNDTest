@@ -1,19 +1,88 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
-}
-
-div {
-  padding-block: 10px;
-}
+@use "../../assets/styles/main-form-styles.scss" as *;
+@use "../../assets/styles/variables.scss" as *;
+@use "sass:color";
 
 .form {
-  margin-top: 10px;
-  margin-bottom: -20px;
+  .btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 16px;
+  }
+}
+
+.cards {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 5px;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+
+  mat-card {
+    width: 100%;
+    max-width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    mat-card-header {
+      padding: 16px;
+      background-color: white;
+      border-bottom: 1px solid #e0e0e0;
+
+      mat-card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $text-color;
+      }
+    }
+
+    mat-card-content {
+      padding: 16px;
+
+      p {
+        margin: 8px 0;
+        font-size: 0.9rem;
+        color: #555555;
+      }
+    }
+
+    mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: 16px;
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: $error-color;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: color.adjust($error-color, $lightness: -10%);
+        }
+
+        mat-icon {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
 }

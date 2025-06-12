@@ -1,3 +1,4 @@
+<div class="header">Реквизиты</div>
 <form class="form">
   <mat-form-field>
     <mat-label>Номер счета</mat-label>
@@ -6,7 +7,13 @@
       placeholder="Введите номер счета"
       required="true"
       [formControl]="bankDetailsForm.controls.accountNumber"
+      class="input"
     />
+    @if(bankDetailsForm.controls.accountNumber.hasError('required')){
+    <mat-error> Номер счета обязателен для заполнения </mat-error>
+    } @else if(bankDetailsForm.controls.accountNumber.hasError('invalidDetail')){
+    <mat-error> Номер счета должен содержать 20 цифр </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>БИК банка</mat-label>
@@ -15,7 +22,13 @@
       placeholder="Введите БИК"
       required="true"
       [formControl]="bankDetailsForm.controls.bic"
+      class="input"
     />
+    @if(bankDetailsForm.controls.bic.hasError('required')){
+    <mat-error> БИК обязателен для заполнения </mat-error>
+    } @else if(bankDetailsForm.controls.bic.hasError('invalidDetail')){
+    <mat-error> БИК должен содержать 9 цифр </mat-error>
+    }
   </mat-form-field>
   <mat-form-field>
     <mat-label>Наименование банка</mat-label>
@@ -24,16 +37,28 @@
       placeholder="Введите наименование"
       required="true"
       [formControl]="bankDetailsForm.controls.bankName"
+      class="input"
     />
+    @if(bankDetailsForm.controls.bankName.hasError('required')){
+    <mat-error> Название банка обязательно для заполнения </mat-error>
+    } @else if(bankDetailsForm.controls.bankName.hasError('minlength')){
+    <mat-error> Название банка должно содержать не менее 3 символов </mat-error>
+    }
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Коореспондентский счет</mat-label>
+    <mat-label>Корреспондентский счет</mat-label>
     <input
       matInput
       required="true"
       placeholder="Введите номер счета"
       [formControl]="bankDetailsForm.controls.correspondentAccount"
+      class="input"
     />
+    @if(bankDetailsForm.controls.correspondentAccount.hasError('required')){
+    <mat-error> Корреспондентский счет обязателен для заполнения </mat-error>
+    } @else if(bankDetailsForm.controls.correspondentAccount.hasError('invalidDetail')){
+    <mat-error> Корреспондентский счет должен содержать 20 цифр </mat-error>
+    }
   </mat-form-field>
 </form>

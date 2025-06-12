@@ -1,9 +1,12 @@
+<div class="header">Информация о транзакции</div>
 <form class="form">
   <mat-form-field>
     <mat-label>Тип транзакции</mat-label>
     <mat-select [formControl]="transactionInfoForm.controls.transactionType">
       @for (transaction of transactions; track transaction) {
-      <mat-option [value]="transaction">{{ transaction }}</mat-option>
+      <mat-option [value]="transaction.type">{{
+        transaction.ruTitle
+      }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -16,6 +19,7 @@
       min="0.01"
       type="number"
       [formControl]="transactionInfoForm.controls.amount"
+      class="input"
     />
   </mat-form-field>
   <mat-form-field>
@@ -32,6 +36,8 @@
       matInput
       [formControl]="transactionInfoForm.controls.comment"
       placeholder="Введите Комментарий"
+      class="input"
+      [maxLength]="200"
     ></textarea>
   </mat-form-field>
 </form>

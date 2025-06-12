@@ -11,7 +11,7 @@
     />
     @if(clientInfoForm.controls.firstName.hasError('required')){
     <mat-error> Имя обязательно для заполнения </mat-error>
-    } @if(clientInfoForm.controls.firstName.hasError('minlength') ||
+    } @else if(clientInfoForm.controls.firstName.hasError('minlength') ||
     clientInfoForm.controls.firstName.hasError('maxlength')){
     <mat-error> Длина имени должна быть от 2 до 50 символов </mat-error>
     }
@@ -28,7 +28,7 @@
     />
     @if(clientInfoForm.controls.lastName.hasError('required')){
     <mat-error> Фамилия обязательна для заполнения </mat-error>
-    } @if(clientInfoForm.controls.lastName.hasError('minlength') ||
+    } @else if(clientInfoForm.controls.lastName.hasError('minlength') ||
     clientInfoForm.controls.lastName.hasError('maxlength')){
     <mat-error> Длина фамилии должна быть от 2 до 50 символов </mat-error>
     }
@@ -67,17 +67,16 @@
       [formControl]="clientInfoForm.controls.birthDate"
       [matDatepicker]="picker"
       class="input"
+      [max]="maxDate"
     />
     <mat-hint>ДД/ММ/ГГГГ</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     @if(clientInfoForm.controls.birthDate.hasError('required')){
     <mat-error> Укажите дату рождения </mat-error>
-    } @if(clientInfoForm.controls.birthDate.hasError('forbiddenAge')){
+    } @else if(clientInfoForm.controls.birthDate.hasError('forbiddenAge')){
     <mat-error> Возраст только от 18 лет </mat-error>
-    } @if(clientInfoForm.controls.birthDate.valid){
-    <p>All good</p>
-    }
+    } 
   </mat-form-field>
 
   <mat-form-field>
@@ -92,7 +91,7 @@
     />
     @if(clientInfoForm.controls.email.hasError('required')){
     <mat-error> Email обязателен для заполнения </mat-error>
-    } @if(clientInfoForm.controls.email.hasError('email')){
+    } @else if(clientInfoForm.controls.email.hasError('email')){
     <mat-error> Введите корректный email </mat-error>
     }
   </mat-form-field>
@@ -109,7 +108,7 @@
     />
     @if(clientInfoForm.controls.phone.hasError('required')){
     <mat-error> Телефон обязателен для заполнения </mat-error>
-    } @if(clientInfoForm.controls.phone.hasError('invalidPhone')){
+    } @else if(clientInfoForm.controls.phone.hasError('invalidPhone')){
     <mat-error> Введите телефон в формате +7 (XXX) XXX-XX-XX </mat-error>
 
     }
@@ -127,7 +126,7 @@
     />
     @if(clientInfoForm.controls.passport.hasError('required')){
     <mat-error> Паспортные данные обязательны </mat-error>
-    } @if(clientInfoForm.controls.passport.hasError('invalidPassport')){
+    } @else if(clientInfoForm.controls.passport.hasError('invalidPassport')){
     <mat-error> Формат: 1234 123456 </mat-error>
     }
   </mat-form-field>

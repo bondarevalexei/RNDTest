@@ -8,35 +8,37 @@ import { DocumentsFormComponent } from '../../features/documents-form/documents-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { ClientInfo } from '../../shared/types/ClientInfo';
 import { Address } from '../../shared/types/Address';
 import { BankDetails } from '../../shared/types/BankDetails';
 import { TransactionInfo } from '../../shared/types/TransactionInfo';
 import { Country } from '../../shared/types/Country';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-widget',
   imports: [
+    //Components
     ClientInfoFormComponent,
     AddressFormComponent,
     BankDetailsFormComponent,
     TransactionInfoFormComponent,
     DocumentsFormComponent,
+    //Modules
     MatButtonModule,
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
     MatButtonModule,
   ],
   templateUrl: './form-widget.component.html',
   styleUrl: './form-widget.component.scss',
 })
 export class FormWidgetComponent {
-  private postFDService = inject(PostFormDataService);
+  private _snackBar = inject(MatSnackBar);
+  private _postFDService = inject(PostFormDataService);
 
   clientInfoForm = viewChild(ClientInfoFormComponent);
   addressForm = viewChild(AddressFormComponent);
@@ -61,13 +63,18 @@ export class FormWidgetComponent {
     }
 
     if (clientInfo && address && bankDetails && transactionInfo) {
-      this.postFDService.postData({
+      this._postFDService.postData({
         clientInfo: clientInfo,
         address: address,
         bankDetails: bankDetails,
         transactionInfo: transactionInfo,
         documents: documents,
       });
+
+      this._snackBar.open(
+        'Данные успешно отправлены. Откройте консольно чтобы увидеть их!',
+        'Понятно'
+      );
     }
   }
 

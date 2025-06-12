@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -15,8 +15,6 @@ import { Gender } from '../../shared/types/general/types';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { DateAdapter } from '@angular/material/core';
@@ -30,12 +28,11 @@ import { DateAdapter } from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatCardModule,
-    MatButtonModule,
     MatIconModule,
   ],
   templateUrl: './client-info-form.component.html',
   styleUrl: './client-info-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientInfoFormComponent {
   constructor(private da: DateAdapter<Date>) {

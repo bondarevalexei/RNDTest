@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -39,13 +39,13 @@ import { DatePipe } from '@angular/common';
   ],
   templateUrl: './documents-form.component.html',
   styleUrl: './documents-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentsFormComponent implements OnInit {
   documents = new FormArray([] as FormGroup[]);
   documentTypes = DOCUMENT_TYPES;
 
   readonly maxDate = new Date();
-
 
   documentType = new FormControl<string>('passport', Validators.required);
   documentNumber = new FormControl<string>('', [

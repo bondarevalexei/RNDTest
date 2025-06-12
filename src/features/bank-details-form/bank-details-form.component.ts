@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,9 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { customDigitsNLengthValidator } from '../../shared/validators/validators';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
@@ -19,11 +17,10 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
   ],
   templateUrl: './bank-details-form.component.html',
   styleUrl: './bank-details-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BankDetailsFormComponent {
   bankDetailsForm = new FormGroup({

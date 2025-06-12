@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,11 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Currency, TransactionType } from '../../shared/types/general/types';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CURRENCIES, TRANSACTION_TYPES } from '../../shared/mock/constants';
@@ -24,13 +20,10 @@ import { CURRENCIES, TRANSACTION_TYPES } from '../../shared/mock/constants';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
   ],
   templateUrl: './transaction-info-form.component.html',
   styleUrl: './transaction-info-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionInfoFormComponent {
   transactions = TRANSACTION_TYPES;

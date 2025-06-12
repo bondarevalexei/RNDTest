@@ -20,10 +20,17 @@
 </div>
 } @else if (!isShowAddForm){
 <div style="margin-bottom: 10px">Вы пока не добавили ни одного документа</div>
-<button matButton="outlined" (click)="isShowAddForm = true">
+}
+
+<button
+  matButton="outlined"
+  (click)="isShowAddForm = true"
+  style="margin-top: 16px"
+>
   Добавить документ
 </button>
-} @if(isShowAddForm){
+
+@if(isShowAddForm){
 <form class="form">
   <mat-form-field>
     <mat-label>Тип документа</mat-label>

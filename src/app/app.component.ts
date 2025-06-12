@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormWidgetComponent } from '../widgets/form-widget/form-widget.component';
 
 @Component({
@@ -6,5 +6,6 @@ import { FormWidgetComponent } from '../widgets/form-widget/form-widget.componen
   imports: [FormWidgetComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}

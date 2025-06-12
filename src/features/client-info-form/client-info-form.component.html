@@ -7,9 +7,13 @@
       placeholder="Введите имя"
       required
       [formControl]="clientInfoForm.controls.firstName"
+      class="input"
     />
     @if(clientInfoForm.controls.firstName.hasError('required')){
     <mat-error> Имя обязательно для заполнения </mat-error>
+    } @if(clientInfoForm.controls.firstName.hasError('minlength') ||
+    clientInfoForm.controls.firstName.hasError('maxlength')){
+    <mat-error> Длина имени должна быть от 2 до 50 символов </mat-error>
     }
   </mat-form-field>
 
@@ -20,9 +24,13 @@
       placeholder="Введите фамилию"
       required
       [formControl]="clientInfoForm.controls.lastName"
+      class="input"
     />
     @if(clientInfoForm.controls.lastName.hasError('required')){
     <mat-error> Фамилия обязательна для заполнения </mat-error>
+    } @if(clientInfoForm.controls.lastName.hasError('minlength') ||
+    clientInfoForm.controls.lastName.hasError('maxlength')){
+    <mat-error> Длина фамилии должна быть от 2 до 50 символов </mat-error>
     }
   </mat-form-field>
 
@@ -32,7 +40,13 @@
       matInput
       placeholder="Введите отчество"
       [formControl]="clientInfoForm.controls.middleName"
+      class="input"
     />
+    @if(clientInfoForm.controls.middleName.value !== '' &&
+    (clientInfoForm.controls.middleName.hasError('minlength') ||
+    clientInfoForm.controls.middleName.hasError('maxlength'))){
+    <mat-error> Длина фамилии должна быть от 2 до 50 символов </mat-error>
+    }
   </mat-form-field>
 
   <mat-form-field>
@@ -52,7 +66,7 @@
       matInput
       [formControl]="clientInfoForm.controls.birthDate"
       [matDatepicker]="picker"
-      style="padding-top: 8px"
+      class="input"
     />
     <mat-hint>ДД/ММ/ГГГГ</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -74,6 +88,7 @@
       placeholder="Введите email"
       type="email"
       [formControl]="clientInfoForm.controls.email"
+      class="input"
     />
     @if(clientInfoForm.controls.email.hasError('required')){
     <mat-error> Email обязателен для заполнения </mat-error>
@@ -87,14 +102,15 @@
     <input
       matInput
       required
-      placeholder="Введите номер телефона"
+      placeholder="Пример +7 (XXX) XXX-XX-XX"
       type="tel"
       [formControl]="clientInfoForm.controls.phone"
+      class="input"
     />
     @if(clientInfoForm.controls.phone.hasError('required')){
     <mat-error> Телефон обязателен для заполнения </mat-error>
     } @if(clientInfoForm.controls.phone.hasError('invalidPhone')){
-    <mat-error> Введите корректный номер телефона </mat-error>
+    <mat-error> Введите телефон в формате +7 (XXX) XXX-XX-XX </mat-error>
 
     }
   </mat-form-field>
@@ -107,6 +123,7 @@
       placeholder="Пример: 1111 111111"
       type="text"
       [formControl]="clientInfoForm.controls.passport"
+      class="input"
     />
     @if(clientInfoForm.controls.passport.hasError('required')){
     <mat-error> Паспортные данные обязательны </mat-error>

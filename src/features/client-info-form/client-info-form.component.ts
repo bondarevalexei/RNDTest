@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-client-info',
@@ -38,6 +38,10 @@ import { ErrorStateMatcher } from '@angular/material/core';
   styleUrl: './client-info-form.component.scss',
 })
 export class ClientInfoFormComponent {
+  constructor(private da: DateAdapter<Date>) {
+    this.da.setLocale('en-GB');
+  }
+
   clientInfoForm = new FormGroup({
     firstName: new FormControl<string>('', [
       Validators.required,
@@ -56,7 +60,7 @@ export class ClientInfoFormComponent {
     gender: new FormControl<Gender>('male', Validators.required),
     birthDate: new FormControl<Date>(new Date(), [
       Validators.required,
-      customClientAgeValidator,
+      customClientAgeValidator(),
     ]),
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     phone: new FormControl('', [

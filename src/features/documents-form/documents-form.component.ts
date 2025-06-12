@@ -44,6 +44,8 @@ export class DocumentsFormComponent implements OnInit {
   documents = new FormArray([] as FormGroup[]);
   documentTypes = DOCUMENT_TYPES;
 
+  readonly maxDate = new Date();
+
 
   documentType = new FormControl<string>('passport', Validators.required);
   documentNumber = new FormControl<string>('', [
